@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Top Trader Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#faf7f2;
+  --cream2:#f3ede3;
+  --ink:#1a1814;
+  --ink2:#3d3a33;
+  --ink3:#7a7569;
+  --gold:#b8892a;
+  --gold2:#d4a445;
+  --gold3:#f0c870;
+  --gold-pale:#fdf3dc;
+  --green:#1a7a4a;
+  --green-pale:#e8f5ed;
+  --red:#c0392b;
+  --red-pale:#fdf0ee;
+  --border:#e8e0d0;
+  --shadow: 0 2px 24px rgba(26,24,20,0.08);
+  --shadow-lg: 0 8px 48px rgba(26,24,20,0.14);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* ── Scrolling ticker ── */
+.ticker{
+  background:var(--ink);
+  overflow:hidden;
+  padding:10px 0;
+  position:sticky;
+  top:0;
+  z-index:200;
+}
+.ticker-inner{display:flex;width:max-content;animation:tick 32s linear infinite}
+.ticker-inner span{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--gold3);
+  padding:0 32px;
+  letter-spacing:1.5px;
+  white-space:nowrap
+}
+.ticker-inner span.up{color:#5de8a0}
+.ticker-inner span.dn{color:#f07070}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── Nav ── */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 80px;
+  background:var(--cream);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:38px;
+  z-index:100;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:-0.5px;
+  text-decoration:none
+}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{
+  font-size:13px;
+  color:var(--ink3);
+  text-decoration:none;
+  font-weight:500;
+  letter-spacing:0.3px;
+  transition:color .2s
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-btn{
+  background:var(--ink);
+  color:var(--cream)!important;
+  padding:10px 22px;
+  border-radius:6px;
+  font-size:13px!important;
+  font-weight:600!important;
+  transition:background .2s!important
+}
+.nav-btn:hover{background:var(--ink2)!important}
+
+/* ── Hero ── */
+.hero{
+  padding:100px 80px 80px;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:80px;
+  align-items:center;
+  max-width:1280px;
+  margin:0 auto;
+}
+.hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:24px;
+}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,6vw,80px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+  color:var(--ink);
+}
+.hero h1 em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--gold);
+}
+.hero-desc{
+  font-size:17px;
+  color:var(--ink3);
+  line-height:1.75;
+  max-width:480px;
+  margin-bottom:40px;
+  font-weight:300;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn-dark{
+  background:var(--ink);
+  color:var(--cream);
+  padding:15px 30px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  letter-spacing:0.3px;
+  transition:all .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.btn-dark:hover{background:var(--gold);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-outline{
+  border:1.5px solid var(--border);
+  color:var(--ink);
+  background:transparent;
+  padding:15px 30px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:500;
+  text-decoration:none;
+  transition:all .2s;
+}
+.btn-outline:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+
+/* Hero trust row */
+.hero-trust{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.trust-item{display:flex;flex-direction:column}
+.trust-item .tnum{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1
+}
+.trust-item .tlabel{font-size:11px;color:var(--ink3);margin-top:3px;letter-spacing:0.5px}
+.trust-sep{width:1px;height:36px;background:var(--border)}
+
+/* Hero right card */
+.hero-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  overflow:hidden;
+}
+.hero-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--gold3));
+}
+.hc-label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--ink3);
+  font-weight:600;
+  margin-bottom:6px;
+}
+.hc-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:20px;
+  color:var(--ink);
+}
+.alert-block{
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  line-height:2;
+}
+.alert-block .row{display:flex;justify-content:space-between;gap:12px}
+.alert-block .key{color:var(--ink3)}
+.alert-block .v-green{color:var(--green);font-weight:700}
+.alert-block .v-red{color:var(--red);font-weight:700}
+.alert-block .v-gold{color:var(--gold);font-weight:700}
+.alert-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--green-pale);
+  color:var(--green);
+  font-size:11px;
+  font-weight:600;
+  padding:6px 14px;
+  border-radius:30px;
+  margin-top:14px;
+  letter-spacing:0.5px;
+}
+.dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+/* Win rate ring */
+.winrate-ring{
+  margin-top:24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.ring-svg{flex-shrink:0}
+.ring-info .rnum{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  font-weight:700;
+  color:var(--green);
+  line-height:1;
+}
+.ring-info .rlabel{font-size:12px;color:var(--ink3);margin-top:2px}
+
+/* ── Section wrapper ── */
+.section{padding:80px 80px;max-width:1280px;margin:0 auto}
+.section-eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4vw,52px);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-1.5px;
+  margin-bottom:16px;
+  color:var(--ink);
+}
+.section-title em{font-style:italic;font-weight:400;color:var(--gold)}
+.section-sub{font-size:16px;color:var(--ink3);max-width:520px;line-height:1.75;font-weight:300}
+
+/* ── Divider ── */
+.divider{height:1px;background:var(--border);max-width:1280px;margin:0 auto}
+
+/* ── Video ── */
+.video-wrap{
+  margin-top:48px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-lg);
+  aspect-ratio:16/9;
+  position:relative;
+  background:var(--ink);
+}
+.video-wrap iframe{width:100%;height:100%;border:none}
+.video-placeholder{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;
+  background:linear-gradient(135deg,#1a1814,#2d2820);
+}
+.play-btn{
+  width:72px;height:72px;
+  background:var(--gold);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+.play-btn:hover{transform:scale(1.08);box-shadow:0 0 0 8px rgba(212,164,69,0.2)}
+.play-btn svg{margin-left:4px}
+.video-placeholder p{color:rgba(255,255,255,0.5);font-size:13px;letter-spacing:1px}
+
+/* ── Features grid ── */
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:48px;
+}
+.feat-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  transition:box-shadow .25s,transform .25s;
+}
+.feat-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.feat-icon{
+  width:44px;height:44px;
+  background:var(--gold-pale);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+  font-size:22px;
+}
+.feat-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:8px;
+  color:var(--ink);
+}
+.feat-card p{font-size:13px;color:var(--ink3);line-height:1.75}
+
+/* ── Reviews ── */
+.reviews-bg{background:var(--ink);padding:80px 0;overflow:hidden}
+.reviews-header{max-width:1280px;margin:0 auto;padding:0 80px 48px}
+.reviews-header .section-eyebrow{color:var(--gold3)}
+.reviews-header .section-title{color:var(--cream)}
+.review-track-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 80px,black calc(100% - 80px),transparent)}
+.review-track{display:flex;gap:20px;width:max-content;animation:slide 40s linear infinite}
+.review-track:hover{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.review-card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:24px 28px;
+  width:320px;
+  flex-shrink:0;
+}
+.stars{color:var(--gold3);font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.review-text{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:16px}
+.review-author{font-size:11px;color:var(--gold3);letter-spacing:1.5px;text-transform:uppercase;font-weight:600}
+
+/* ── Pricing ── */
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:48px;
+  align-items:start;
+}
+.price-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:36px 32px;
+  transition:box-shadow .25s;
+}
+.price-card:hover{box-shadow:var(--shadow-lg)}
+.price-card.featured{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:var(--cream);
+  transform:scale(1.03);
+  box-shadow:var(--shadow-lg);
+}
+.price-tag{
+  display:inline-block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:30px;
+  margin-bottom:20px;
+}
+.pt-gold{background:var(--gold-pale);color:var(--gold)}
+.pt-dark{background:rgba(255,255,255,0.1);color:var(--gold3)}
+.pt-muted{background:var(--cream2);color:var(--ink3)}
+.price-name{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.price-amount{
+  font-family:'Playfair Display',serif;
+  font-size:56px;
+  font-weight:700;
+  line-height:1;
+  margin:16px 0 4px;
+}
+.price-amount sup{font-size:24px;vertical-align:top;margin-top:14px;display:inline-block}
+.price-period{font-size:12px;color:var(--ink3);margin-bottom:28px;letter-spacing:0.5px}
+.price-card.featured .price-period{color:rgba(255,255,255,0.5)}
+.price-sep{height:1px;background:var(--border);margin:24px 0}
+.price-card.featured .price-sep{background:rgba(255,255,255,0.12)}
+.price-features{list-style:none;margin-bottom:32px}
+.price-features li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:7px 0;
+  font-size:13px;
+  border-bottom:1px solid var(--border);
+  color:var(--ink2);
+}
+.price-card.featured .price-features li{border-bottom-color:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8)}
+.price-features li:last-child{border-bottom:none}
+.check{color:var(--green);font-size:15px;flex-shrink:0;margin-top:1px}
+.price-card.featured .check{color:var(--gold3)}
+.price-btn{
+  display:block;
+  text-align:center;
+  padding:15px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  letter-spacing:0.3px;
+  transition:all .2s;
+}
+.pb-gold{background:var(--gold);color:white}
+.pb-gold:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(184,137,42,0.35)}
+.pb-dark{background:var(--ink);color:var(--cream)}
+.pb-dark:hover{background:var(--ink2)}
+.pb-outline{border:1.5px solid var(--border);color:var(--ink)}
+.pb-outline:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.price-note{font-size:11px;text-align:center;margin-top:12px;letter-spacing:0.5px}
+.price-note-light{color:var(--ink3)}
+.price-note-dark{color:rgba(255,255,255,0.4)}
+
+/* ── Flash badge ── */
+.flash-badge{
+  background:linear-gradient(135deg,var(--gold),var(--gold3));
+  color:var(--ink);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:6px 14px;
+  border-radius:30px;
+  display:inline-block;
+  margin-bottom:16px;
+  animation:glow 2s ease-in-out infinite;
+}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(212,164,69,0.4)}50%{box-shadow:0 0 20px rgba(212,164,69,0.7)}}
+
+/* ── Guarantees ── */
+.guarantee-strip{
+  background:var(--gold-pale);
+  border:1px solid rgba(184,137,42,0.2);
+  border-radius:20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  divide-x:1px solid rgba(184,137,42,0.2);
+  margin-top:40px;
+  overflow:hidden;
+}
+.g-item{
+  padding:32px 28px;
+  border-right:1px solid rgba(184,137,42,0.15);
+}
+.g-item:last-child{border-right:none}
+.g-icon{font-size:28px;margin-bottom:14px;display:block}
+.g-title{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.g-desc{font-size:13px;color:var(--ink3);line-height:1.75}
+
+/* ── FAQ ── */
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:0}
+.faq-item{
+  border-bottom:1px solid var(--border);
+}
+.faq-q{
+  padding:22px 0;
+  font-family:'Playfair Display',serif;
+  font-size:19px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  color:var(--ink);
+  user-select:none;
+  transition:color .2s;
+}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{
+  flex-shrink:0;
+  width:32px;height:32px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  color:var(--ink3);
+  transition:all .3s;
+}
+.faq-item.open .faq-icon{background:var(--gold);border-color:var(--gold);color:white;transform:rotate(45deg)}
+.faq-a{
+  font-size:14px;
+  color:var(--ink3);
+  line-height:1.85;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease,padding-bottom .3s;
+  font-weight:300;
+}
+.faq-item.open .faq-a{max-height:160px;padding-bottom:22px}
+
+/* ── Contact ── */
+.contact-strip{
+  background:var(--ink);
+  padding:80px;
+  text-align:center;
+}
+.contact-strip h2{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  font-weight:700;
+  color:var(--cream);
+  margin-bottom:12px;
+  letter-spacing:-1px;
+}
+.contact-strip p{color:rgba(255,255,255,0.5);font-size:15px;margin-bottom:36px;font-weight:300}
+.contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.contact-link{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  color:var(--cream);
+  padding:13px 24px;
+  border-radius:10px;
+  font-size:14px;
+  text-decoration:none;
+  transition:all .2s;
+  font-weight:500;
+}
+.contact-link:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+/* ── Footer ── */
+footer{
+  background:var(--ink2);
+  padding:32px 80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+footer .flogo{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  font-weight:700;
+  color:var(--cream);
+  opacity:0.7;
+}
+footer .fcopy{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px}
+
+/* ── Animations ── */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  nav{padding:18px 24px}
+  .nav-links a:not(.nav-btn){display:none}
+  .hero{grid-template-columns:1fr;padding:60px 24px;gap:40px}
+  .hero-card{display:none}
+  .section{padding:60px 24px}
+  .features-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .price-card.featured{transform:none}
+  .guarantee-strip{grid-template-columns:1fr}
+  .g-item{border-right:none;border-bottom:1px solid rgba(184,137,42,0.15)}
+  .g-item:last-child{border-bottom:none}
+  .contact-strip{padding:60px 24px}
+  footer{flex-direction:column;gap:12px;padding:24px;text-align:center}
+  .reviews-header{padding:0 24px 40px}
+}
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="up">AAPL ▲ +2.4%</span>
+    <span>·</span>
+    <span class="up">TSLA ▲ +5.1%</span>
+    <span>·</span>
+    <span class="up">NVDA ▲ +3.8%</span>
+    <span>·</span>
+    <span class="dn">META ▼ −1.2%</span>
+    <span>·</span>
+    <span style="color:var(--gold3)">WIN RATE 80%+</span>
+    <span>·</span>
+    <span class="up">SPY ▲ +0.9%</span>
+    <span>·</span>
+    <span style="color:var(--gold3)">ALERT: ALZN — ENTRY $5.50–$5.72 · EXIT $6.00–$6.40 · SL $5.30</span>
+    <span>·</span>
+    <span class="up">QQQ ▲ +1.6%</span>
+    <span>·</span>
+    <span style="color:var(--gold3)">⚡ 50% OFF FLASH SALE — 2 SPOTS LEFT</span>
+    <span>·</span>
+    <!-- duplicate -->
+    <span class="up">AAPL ▲ +2.4%</span>
+    <span>·</span>
+    <span class="up">TSLA ▲ +5.1%</span>
+    <span>·</span>
+    <span class="up">NVDA ▲ +3.8%</span>
+    <span>·</span>
+    <span class="dn">META ▼ −1.2%</span>
+    <span>·</span>
+    <span style="color:var(--gold3)">WIN RATE 80%+</span>
+    <span>·</span>
+    <span class="up">SPY ▲ +0.9%</span>
+    <span>·</span>
+    <span style="color:var(--gold3)">ALERT: ALZN — ENTRY $5.50–$5.72 · EXIT $6.00–$6.40 · SL $5.30</span>
+    <span>·</span>
+    <span class="up">QQQ ▲ +1.6%</span>
+    <span>·</span>
+    <span style="color:var(--gold3)">⚡ 50% OFF FLASH SALE — 2 SPOTS LEFT</span>
+    <span>·</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a class="logo" href="#">Top <span>Trader</span> Academy</a>
+  <div class="nav-links">
+    <a href="#video">Video</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#pricing" class="nav-btn">Start Free Trial →</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Professional Trading Community</div>
+    <h1>Trade smarter.<br/>Profit <em>consistently.</em></h1>
+    <p class="hero-desc">Join hundreds of profitable traders receiving precise buy & sell alerts with entries, exits, and stop losses — every single day.</p>
+    <div class="hero-actions">
+      <a class="btn-dark" href="#pricing">Start 14-Day Free Trial →</a>
+      <a class="btn-outline" href="#video">Watch the Video</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <span class="tnum">80%+</span>
+        <span class="tlabel">Win Rate</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="tnum">14</span>
+        <span class="tlabel">Days Free</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="tnum">30-Day</span>
+        <span class="tlabel">Guarantee</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="tnum">$0</span>
+        <span class="tlabel">Cancel Fee</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live alert card -->
+  <div class="hero-card">
+    <div class="hc-label">Live Alert Example</div>
+    <div class="hc-title">Real-time trade signals</div>
+    <div class="alert-block">
+      <div class="row"><span class="key">Ticker</span><span class="v-gold">ALZN</span></div>
+      <div class="row"><span class="key">Size</span><span>100 shares</span></div>
+      <div class="row"><span class="key">Entry</span><span class="v-green">$5.50 – $5.72</span></div>
+      <div class="row"><span class="key">Exit</span><span class="v-green">$6.00 – $6.40</span></div>
+      <div class="row"><span class="key">Stop Loss</span><span class="v-red">$5.30</span></div>
+      <div class="row"><span class="key">Setup</span><span style="color:#7a7569">Buying support</span></div>
+    </div>
+    <div class="alert-badge">
+      <div class="dot"></div>
+      Alerts Live Now
+    </div>
+    <div class="winrate-ring">
+      <svg class="ring-svg" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="26" fill="none" stroke="#e8e0d0" stroke-width="6"/>
+        <circle cx="32" cy="32" r="26" fill="none" stroke="#1a7a4a" stroke-width="6"
+          stroke-dasharray="130 163" stroke-dashoffset="41" stroke-linecap="round"/>
+      </svg>
+      <div class="ring-info">
+        <div class="rnum">80%+</div>
+        <div class="rlabel">Verified Win Rate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Video -->
+<div class="section reveal" id="video">
+  <div class="section-eyebrow">Watch First</div>
+  <h2 class="section-title">See why traders <em>choose us</em></h2>
+  <p class="section-sub">Watch the full breakdown of how Top Trader Academy works and what you get from day one.</p>
+  <div class="video-wrap">
+    <div class="video-placeholder">
+      <div class="play-btn" onclick="loadVideo(this)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M8 5l11 7-11 7V5z" fill="#1a1814"/>
+        </svg>
+      </div>
+      <p>Click to watch · Top Trader Academy</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Features -->
+<div class="section reveal" id="features">
+  <div class="section-eyebrow">What You Get</div>
+  <h2 class="section-title">Everything you need to <em>win</em></h2>
+  <p class="section-sub">No fluff. Just professional-grade tools and community access that actually moves the needle.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
+      <h3>Real-Time Alerts</h3>
+      <p>Every alert includes ticker, entry range, exit targets, and stop loss. Execute with confidence — no guesswork.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📈</div>
+      <h3>Option Trade Signals</h3>
+      <p>Options alerts with precise strikes, expiry, and position sizing. High probability setups, every time.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💬</div>
+      <h3>Private Discord Community</h3>
+      <p>Access an exclusive community of profitable traders. Share setups, ask questions, and grow together.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎯</div>
+      <h3>Stop Loss Included</h3>
+      <p>Every single alert comes with a stop loss level. Protect your capital on every trade, automatically.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🤝</div>
+      <h3>1-on-1 Messaging</h3>
+      <p>Direct private access to the team. Get your specific questions answered by professionals.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎓</div>
+      <h3>Exclusive Lesson Videos</h3>
+      <p>Learn the strategies behind the alerts. Build real trading skills — not just blind followers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Reviews -->
+<div class="reviews-bg reveal">
+  <div class="reviews-header">
+    <div class="section-eyebrow">Proof</div>
+    <h2 class="section-title" style="color:var(--cream)">Real members, <em>real results</em></h2>
+  </div>
+  <div class="review-track-wrap">
+    <div class="review-track">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Made back my subscription in literally the first week. The entry and exit precision is unlike anything I've used before."</p>
+        <div class="review-author">— Verified Member</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The stop losses alone have saved me thousands. This community actually cares about your account, not just the wins."</p>
+        <div class="review-author">— Active Trader, 6 months</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"3 years of trading and I finally found something that works consistently. The 80%+ win rate is completely real."</p>
+        <div class="review-author">— Pro Member</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Options alerts are incredible. Hit 4 out of 5 trades last week alone. The accuracy here is next level."</p>
+        <div class="review-author">— Options Trader</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The 1-on-1 access is a game changer. Sam actually responds and walks you through the setup. Unreal value."</p>
+        <div class="review-author">— New Member, Week 2</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"14-day free trial sealed it for me. Had 3 winning trades before I even paid. No-brainer decision."</p>
+        <div class="review-author">— Converted Member</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I was skeptical at first but the Discord community and live alerts proved me completely wrong. Legit service."</p>
+        <div class="review-author">— Skeptic Turned Believer</div>
+      </div>
+      <!-- dup -->
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Made back my subscription in literally the first week. The entry and exit precision is unlike anything I've used before."</p>
+        <div class="review-author">— Verified Member</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The stop losses alone have saved me thousands. This community actually cares about your account, not just the wins."</p>
+        <div class="review-author">— Active Trader, 6 months</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"3 years of trading and I finally found something that works consistently. The 80%+ win rate is completely real."</p>
+        <div class="review-author">— Pro Member</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Options alerts are incredible. Hit 4 out of 5 trades last week alone. The accuracy here is next level."</p>
+        <div class="review-author">— Options Trader</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The 1-on-1 access is a game changer. Sam actually responds and walks you through the setup. Unreal value."</p>
+        <div class="review-author">— New Member, Week 2</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"14-day free trial sealed it for me. Had 3 winning trades before I even paid. No-brainer decision."</p>
+        <div class="review-author">— Converted Member</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I was skeptical at first but the Discord community and live alerts proved me completely wrong. Legit service."</p>
+        <div class="review-author">— Skeptic Turned Believer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pricing -->
+<div class="section reveal" id="pricing">
+  <div class="section-eyebrow">Simple Pricing</div>
+  <h2 class="section-title">Pick your <em>plan</em></h2>
+  <p class="section-sub">No hidden fees. Cancel anytime. Start with 14 days completely free.</p>
+
+  <div class="pricing-grid">
+    <!-- Flash Sale -->
+    <div class="price-card featured">
+      <div class="flash-badge">⚡ Flash Sale</div>
+      <div class="price-tag pt-dark">2 Spots Remaining</div>
+      <div class="price-name">Flash Deal</div>
+      <div style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:line-through;margin-top:8px">$200/mo</div>
+      <div class="price-amount"><sup>$</sup>99</div>
+      <div class="price-period">per month · after free trial</div>
+      <div class="price-sep"></div>
+      <ul class="price-features">
+        <li><span class="check">✓</span>Exclusive Discord Community</li>
+        <li><span class="check">✓</span>Trade Entries + Exit Strategies</li>
+        <li><span class="check">✓</span>Stop Loss on Every Alert</li>
+        <li><span class="check">✓</span>Option Trade Alerts</li>
+        <li><span class="check">✓</span>One-on-One Private Messaging</li>
+        <li><span class="check">✓</span>Exclusive Lesson Videos</li>
+      </ul>
+      <a class="price-btn pb-gold" href="https://toptraders.mykajabi.com/offers/ic43kU9A/checkout">Start Free Trial →</a>
+      <p class="price-note price-note-dark">14 days free · cancel anytime</p>
+    </div>
+
+    <!-- Monthly -->
+    <div class="price-card">
+      <div style="height:32px"></div>
+      <div class="price-tag pt-muted">Standard</div>
+      <div class="price-name">Monthly Access</div>
+      <div class="price-amount"><sup>$</sup>200</div>
+      <div class="price-period">per month · unlimited spots</div>
+      <div class="price-sep"></div>
+      <ul class="price-features">
+        <li><span class="check">✓</span>Exclusive Discord Community</li>
+        <li><span class="check">✓</span>Trade Entries + Exit Strategies</li>
+        <li><span class="check">✓</span>Stop Loss on Every Alert</li>
+        <li><span class="check">✓</span>Option Trade Alerts</li>
+        <li><span class="check">✓</span>One-on-One Private Messaging</li>
+        <li><span class="check">✓</span>Exclusive Lesson Videos</li>
+      </ul>
+      <a class="price-btn pb-dark" href="https://toptraders.mykajabi.com/offers/XM44CjY6/checkout">Join Now →</a>
+      <p class="price-note price-note-light">Cancel anytime, no commitments</p>
+    </div>
+
+    <!-- Lifetime -->
+    <div class="price-card">
+      <div style="height:32px"></div>
+      <div class="price-tag pt-gold">Best Value</div>
+      <div class="price-name">Lifetime Access</div>
+      <div class="price-amount"><sup>$</sup>2,400</div>
+      <div class="price-period">one-time payment · forever</div>
+      <div class="price-sep"></div>
+      <ul class="price-features">
+        <li><span class="check">✓</span>Exclusive Discord Community</li>
+        <li><span class="check">✓</span>Trade Entries + Exit Strategies</li>
+        <li><span class="check">✓</span>Stop Loss on Every Alert</li>
+        <li><span class="check">✓</span>Option Trade Alerts</li>
+        <li><span class="check">✓</span>One-on-One Private Messaging</li>
+        <li><span class="check">✓</span>Exclusive Lesson Videos</li>
+      </ul>
+      <a class="price-btn pb-outline" href="https://toptraders.mykajabi.com/offers/8ttXGthK">Get Lifetime Access →</a>
+      <p class="price-note price-note-light">Pay once, trade forever</p>
+    </div>
+  </div>
+
+  <div class="guarantee-strip">
+    <div class="g-item">
+      <span class="g-icon">🔓</span>
+      <div class="g-title">No Contracts, Ever</div>
+      <p class="g-desc">Cancel anytime with zero cancellation fees. No commitments, no lock-ins. Your choice, always.</p>
+    </div>
+    <div class="g-item">
+      <span class="g-icon">🛡️</span>
+      <div class="g-title">30-Day Money Back</div>
+      <p class="g-desc">Not satisfied within 30 days? Full refund, no questions asked. We stand behind our results completely.</p>
+    </div>
+    <div class="g-item">
+      <span class="g-icon">🎁</span>
+      <div class="g-title">14 Days Completely Free</div>
+      <p class="g-desc">Experience the full community, alerts, and lessons before paying a single cent. Trial with no strings attached.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<div class="section reveal">
+  <div class="section-eyebrow">FAQ</div>
+  <h2 class="section-title">Questions <em>answered</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Are my results guaranteed?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Like anything in life, results depend on the effort you put in. We offer a 30-day money-back guarantee, but the traders who commit to the process and follow the alerts consistently are the ones who see real, lasting results.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Will I get access to Buy and Sell alerts?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Yes — every single alert includes the ticker, share size, entry range, exit price targets, and stop loss level. Full transparency on every trade, no guessing required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        How many alerts per day should I expect?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Top Trader Academy has multiple professional traders scanning for the best setups daily. The number varies based on market conditions — we prioritize quality setups over quantity, so every alert is worth your attention.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        What is the verified win rate on trades?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Over 80%. This is backed by verified trade screenshots available inside the community — full transparency, nothing hidden. You can review the track record before committing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        How do I cancel my membership?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">No contracts, no complications. You can cancel your membership at any time directly from your account — zero cancellation fees, zero hassle. We don't believe in trapping members.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact / CTA -->
+<div class="contact-strip">
+  <h2>Ready to start trading?</h2>
+  <p>Join today and get your first 14 days completely free.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="https://toptraders.mykajabi.com/offers/ic43kU9A/checkout">Start Free Trial →</a>
+    <a class="contact-link" href="mailto:sam@toptraderacademy.org">✉ sam@toptraderacademy.org</a>
+    <a class="contact-link" href="https://wa.me/16473353058">💬 WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <div class="flogo">Top Trader Academy</div>
+  <div class="fcopy">© 2026 TOP TRADER ACADEMY · ALL RIGHTS RESERVED</div>
+</footer>
+
+<script>
+function toggleFaq(item){
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+function loadVideo(btn){
+  const wrap=btn.closest('.video-wrap');
+  wrap.innerHTML='<iframe src="https://www.youtube.com/embed/?autoplay=1&rel=0&modestbranding=1" title="Top Trader Academy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none"></iframe>';
+}
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in')}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
